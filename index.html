@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+
+  <title>Real‑time Transcription (gpt‑4o‑transcribe)</title>
+
+  <!-- Styling the HTML Page a little bit-->
+  <style>
+  
+    body {
+      font-family: system-ui, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
+      margin: 2rem;
+    }
+
+
+    button {
+      padding: .6rem 1.2rem;
+      margin-right: .5rem;
+      font-size: 1rem;
+    }
+
+    
+    #transcript {
+      white-space: pre-wrap;          /* preserve \n from JS */
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      padding: 1rem;
+      margin-top: 1rem;
+      min-height: 6rem;
+    }
+
+    /* Collapsible debug log underneath the transcript to help me debug the WebRTC connection from the HTML page */
+    #log {
+      font-size: .85rem;
+      color: #666;
+      margin-top: 1rem;
+      max-height: 10rem;             /* scroll when overflow */
+      overflow: auto;
+    }
+  </style>
+</head>
+
+<body>
+ 
+  <h2>
+    Real‑time Transcription demo<br>
+    <small>(gpt‑4o‑transcribe)</small>
+  </h2>
+
+  
+  <button id="startBtn">Start</button>
+  <button id="stopBtn" disabled>Stop</button>
+
+  <!-- Where each completed speech is appended line by line -->
+  <div id="transcript" aria-label="Live transcript will appear here…"></div>
+
+  <!-- error logging -->
+  <details>
+    <summary>Debug log</summary>
+    <pre id="log"></pre>
+  </details>
+
+  <!-- env.js holds (endpoint, key, etc.) so
+       they don’t get committed to version control -->
+  <script src="env.js"></script>
+
+  <!-- script.js contains all runtime logic: session creation, WebRTC
+       handshake, data‑channel event handling, and DOM updates -->
+  <script src="script.js"></script>
+</body>
+</html>
