@@ -44,6 +44,7 @@ async function startRTC() {
       /* prompt prevents Whisper‑style auto‑translation */
       input_audio_transcription: {
         model: DEPLOYMENT,
+        //If you want to add a specific language, language: "ar",
         prompt:
           "Return the transcript exactly as spoken in the original script. Do not translate."
         /* language omitted → auto‑detect */
